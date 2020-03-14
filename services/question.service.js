@@ -14,7 +14,7 @@ service.getById = getById;
 service.create = create;
 // service.update = update;
 service.delete = _delete;
-service.get_all_question = get_all_question;
+service.get_all_questions = get_all_questions;
 
 module.exports = service; 
 
@@ -51,10 +51,11 @@ function create(questionParam) {
     return deferred.promise;
 }
 
-function get_all_question() {
+
+function get_all_questions() {
     var deferred = Q.defer();   
     
-    db.question.find({}).toArray(        
+    db.questions.find({}).toArray(        
         function (err, doc) {
             if (err) deferred.reject(err.name + ': ' + err.message);
 
