@@ -16,6 +16,8 @@ service.create = create;
 service.delete = _delete;
 service.get_all_question = get_all_question;
 
+module.exports = service; 
+
 function create(questionParam) {
     var deferred = Q.defer();
 
@@ -33,11 +35,12 @@ function create(questionParam) {
             }
         });
 
+       
     function createQuestion() {
         // set user object to userParam without the cleartext password
         
         db.questions.insert(
-            question,
+            questionParam,
             function (err, doc) {
                 if (err) deferred.reject(err.name + ': ' + err.message);
 

@@ -4,13 +4,15 @@ var router = express.Router();
 var questionService = require('services/question.service');
 
 // routes
-router.post('/register', registerQuestions);
+router.post('/register', registerQuestion);
 // router.get('/:_id', getCurrentQuestion);
 // router.put('/:_id', updateQuestion);
 router.delete('/:_id', deleteQuestion);
 router.get('/', get_all_Questions);
 
-function registerQuestions(req, res) {
+module.exports = router;
+
+function registerQuestion(req, res) {
     questionService.create(req.body)
         .then(function () {
             res.sendStatus(200);
